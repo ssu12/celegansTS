@@ -1,0 +1,178 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\setlength{\parskip}{0.5em}
+\setlength\parindent{0pt}
+\interfootnotelinepenalty=10000
+
+% % Language and font encodings
+% \usepackage[english]{babel}
+% \usepackage[utf8x]{inputenc}
+% \usepackage[T1]{fontenc}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+% figures and tables
+\usepackage{graphicx}
+% \graphicspath{{data/}}
+\usepackage{subfigure}	
+\usepackage{float}		
+\setlength{\floatsep}{10pt plus 2.0pt minus 2.0pt}
+\usepackage{caption}
+% \usepackage{pdfpages}
+% \usepackage{epstopdf}
+% \usepackage{svg}
+% \usepackage{pgfplots}	
+% \pgfplotsset{compat=newest}
+\setlength\tabcolsep{1em}
+\usepackage{multirow}
+\renewcommand{\arraystretch}{1.3}
+
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+
+% science
+\usepackage{siunitx}
+\DeclareSIUnit{\molar}{M}
+\usepackage{chemformula}
+
+% miscellaneous 
+\usepackage{enumitem}	
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage[color=cyan]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{natbib}
+
+
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+
+\newcommand{\note}[1]{\colorbox{cyan}{#1}}
+
+\title{\vspace{-2cm} \textsc{\underline{Laboratory Report \#11}} \\ \textbf{Travelling Salesman Problem: the Quasi-Optimal Chemotactic Renormalisation Solution} \vspace{-0.5cm}}
+\author{\textsc{Benjamin Huang and Shiye Su}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Abstract here
+\end{abstract}
+
+\section{Introduction}
+
+The traveling salesperson problem (TSP) is a classic problem in combinatorial optimization. The problem asks to find the shortest route that visits $n$ cities exactly once, except for the first and last cities, which are the same. As an NP-complete problem that is $O(n!)$, exact algorithms have not improved beyond worst-case $O(n^22^n)$, which is costly in time and computing resources \citep{Held1962}. An active field of research focuses on heuristics and approximate solutions, including greedy algorithms, simulated annealing, and renormalization, where balancing computation time and solution accuracy are paramount.\\
+
+\par Renormalization theory, in essence, concerns a \textit{rescaling} of a problem. As used by \citet{Yoshiyuki1995}, the TSP can be simplified by ``zooming out;'' a map of cities, seen from far away, will appear to only have a few clusters of cities. Since exact TSP algorithms are $O(n^22^n)$, a problem with a small number of cities ($n \approx 4$) is trivial to solve. Figure \ref{fig:grid} shows how this concept was applied by \citet{Yoshiyuki1995} to reduce the TSP into a large number of smaller problems, iteratively solving for smaller and smaller clusters of cities, until clusters are single cities. This is done through what we will call ``orthogonal gridding,'' which recursively divides the cities into four quadrants. \citet{Yoshiyuki1995} found a tour 30\% longer than the optimal tour for a 532 US city problem.\\
+
+\par Other methods besides orthogonal gridding have been explored to extend upon the work of \citet{Yoshiyuki1995}. \citet{Ugajin2002} employed the inverse diffusion process to cluster cities based on a reverse diffusion process. He grouped cities by the convergence of diffusing point sources, where each point source was a city. His results show an improvement over \citet{Yoshiyuki1999} on the 532 US city problem to 17\% worse than optimal. Two cities were said to have ``converged'' when the edges of the diffusing material mixed. \note{Clean up this phrasing?} Furthermore, renormalization theory has been extended in optimization problems in combination with genetic algorithms by \citet{Houdayer1999}. Their results show a genetic-renormalization algorithms ability to achieve optimal or very close to optimal (at worst, 0.0056 \% longer) solutions in a fraction of the computation time. \\
+
+\par Optimization problems have been solved using organically-inspired solutions (such as ant colony optimization), but never have they been used in conjunction with renormalization theory.
+Building off of the work of \citet{Yoshiyuki1995} and \citet{Ugajin2002}, we investigate  
+a new, probabilistic way of clustering cities based on the chemotaxis of \textit{Caenorhabditis 
+elegans} (\textit{C. elegans}). The chemotaxis of \textit{C. elegans} in response to \ch{NaCl} is well documented as an intricate phenomenon, leading to our interest in their ability to cluster cities effectively for renormalization. 
+
+We seek to investigate whether chemotactic behaviour of \emph{C. elegans} in response to \ch{NaCL} gradients offers a viable renormalisation procedure. To do so, we acquire image sequences of worms moving on a plate of radial gradients, use image analysis to extract their trajectories, and analyse the convergence of the worms' displacements to determine the renormalisation. \note{very dodgily explained} We have conducted the experiment with real \emph{C. elegans}, but if chemotaxis is an efficient heuristic, we anticipate that chemotactic behaviour (similar to micro-scale diffusion) could be simulated.
+
+TSP has broad applications in operations research, circuit design, materials fabrication, and DNA sequencing, and is related to problems of theoretical significance in graph theory.
+
+
+\section{Materials and Methods}
+
+\textit{C. elegans} worms were grown at \SI{50}{\milli\molar} \ch{NaCl}. Agar plates were made at \SI{50}{\milli\molar} \ch{NaCl}. Using a plate-sized template of a six-city configuration labelled A-F was created (see Figure \ref{figsol}), \SI{5}{\micro\litre} of \SI{200}{\milli\molar} \ch{NaCl} solution was spotted on the surface of the agar at each city location. The salt solution was allowed to diffuse into and through the agar for $\approx \SI{30}{\minute}$, the time estimated by the algorithm to create a radial gradient of \note{X} (\note{Wombreeder's Gazette cite?}). A single \textit{C. elegans} was placed at a city. Imediately the plate was placed inside a ring light and the mounted camera began image sequence acquisition for 5 minutes at 2 frames/s (600 frames). Using a new worm and new plate, this image acquisition process was repeated 4-5 times for each city. Using image processing, the xy coordinates of each worm's trajectory was extracted for analysis. 
+
+A set of six worms, one from each city was chosen, and each worm's trajectory converted into a displacement from its starting position. Figure \ref{figchem} shows our procedure for chemotaxis renormalisation: we considered circles centred at each city with radii equal to the respecitive worm's net displacement. The overlapping of any two circles is a \emph{convergence}, and the two converging cities, with their associated groups if any, merged into an ordered group representing the path. For example, if A and B (neither in groups) converge, they form a group \{A, B\}; if then A and C converge, and C is in the group \{C, D, E, F\}, the resultant ordered group is \{A, B, C, D, E, F\}, \{B, A, C, D, E, F\}, \{C, D, E, F, A, B\}, or \{C, D, E, F, B, A\}, i.e. ordering of each group must be preserved or reversed in the new group. Which one of these combinations is based on the closest distance between group endpoints. In summary, our computation processes chemotactic trajectories into a city convergence order into a final path. Refer to appended script for implementation details. 
+
+\begin{figure}[H]
+	\centering
+	\subfigure[]{\includegraphics[width=0.3\textwidth, trim={5cm 8cm 5cm 8cm}, clip]{figchem1.pdf}}
+	\subfigure[]{\includegraphics[width=0.3\textwidth, trim={5cm 8cm 5cm 8cm}, clip]{figchem2.pdf}}
+	\subfigure[]{\includegraphics[width=0.3\textwidth, trim={5cm 8cm 5cm 8cm}, clip]{figchem3.pdf}}
+	\caption{Chemotaxis renormalisation procedure, shown for one arbitrarily chosen set one worms leaving each city. In this set, cities C and D are the first to converge (a), then A and C, then F and C (b). All cities have converged (homogenousation) by Frame 300 (c).}
+	\label{figchem}
+\end{figure}
+
+
+\section{Results and Discussion}
+
+Figure \ref{figdye} provides evidence that our spotting method indeed creates a radial gradient. The rationale for this experimental setup is that via chemotaxis, \text{C. elegans} worms seek the environment in which they were grown, in this case an ambient \SI{50}{\milli \molar} \ch{NaCl} concentration. Thus, in theory, they are motivated away from the concentrated \ch{NaCl} city locations at a rate positively correlated to the concentrations at the cities. The plate has higher \ch{NaCl} concentration for regions of high city density; the worms should chemotaxis away from cities more rapidly, resulting in an earlier convergence of these cities. Intuitively, this is sound for TSP as geographically close cities should be traversed at similar times on the route. Furthermore, chemotaxis introduces a stochastic element which we think could be beneficial. Because the worms' trajectories are non-deterministic, we will be able to explore more routes in the sample space and potentially come across a better solution. This is in contrast to diffusion, which on a macro-scale is deterministic, and would consistently yield a `greedy' nearest-distance grouping. 
+
+\begin{figure}[H]
+	\centering
+	\subfigure[Before]{\includegraphics[width=0.25\textwidth]{figbefore.png}}
+	\subfigure[After]{\includegraphics[width=0.25\textwidth]{figafter.png}}
+	\caption{Methylene blue dye spotted on agar, allowed to diffuse for \note{X} hours}.
+	\label{figdye}
+\end{figure}
+
+We present our solutions to this particular city configuration in Figure \ref{figsol}. Orthogonal gridding (a) divides
+
+We noted that orthogonal gridding is somewhat arbitrary in how the map is divided into quadrants. Furthermore, we see that this division is sensitive to the framing of the map, so that the absolute rather than relative coordinates of the city become important to the renormalisation solution. That chemotactic renormalisation deals with relative distances is an advantage over gridding.
+
+
+\begin{figure}[H]
+	\centering
+    \subfigure[Solution: ABEFCDA]{\includegraphics[width=0.4\textwidth, trim={2cm 8cm 2cm 8cm},clip]{figgrid.pdf}}
+    \subfigure[Solution: ABEFDCA]{\includegraphics[width=0.4\textwidth, trim={2cm 8cm 2cm 8cm},clip]{figchem.pdf}}
+    \caption{Renormalisation (orthogonal and chemotactic) solutions. The solution to this TSP, found with computational brute force (refer to appendix for script) is ABEFDCA, which is the solution overwhelmingly found via chemotaxis (Refer to Figure \ref{fighist}).}
+    \label{figsol}
+\end{figure}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c | c c c}
+	\hline
+	\textsc{Method} & \textsc{Distance} (\SI{}{\meter}) & \textsc{Percent Improvement} & \textsc{Deviation from Optimal} \\
+	\hline
+	Optimal 					& 0.0965 & 22.3\% & 0\% 	\\
+    Median and mode chemotactic & 0.0965 & 22.3\% & 0\% 	\\
+	Mean chemotactic 			& 0.0973 & 21.2\% & .88\% 	\\
+    Worst chemotactic 			& 0.1200 & 3.3\%  & 24.4\% 	\\
+	Orthogonal gridding 		& 0.1034 & 16.7\% & 7.2\% 	\\
+	\hline
+	\end{tabular}
+	\caption{Path distances, percent improvement from the median path length of all possible traversals (calculated as $ \frac{\text{median} - \text{this path}}{\text{median}} $), and percent deviation from the optimal solution of this TSP (calculated as $ \frac{\text{this path} - \text{optimal}}{\text{optimal}} $).}
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=0.7\textwidth, trim={0 8cm 0 9cm}, clip]{fighist.pdf}
+    \caption{Probability distribution of path distances for all possible traversals of the configuration, all chemotatically renormalised paths, and orthogonal gridding. The solution path length is \SI{0.0965}{\metre} (contained in leftmost chemotactic bin).}
+    \label{fighist}
+\end{figure}
+
+In this experiment, the measurement errors of the worms' exact positions on the plate should be relatively insignificant in our calculations of the solution. It was important, however, that all image sequences were calibrated to the correct scale, as this is likely to affec the order or convergences and thus the final solution. There is `error' in the sense that each worm trajectory is stochastic - this was a property of chemotaxis we wanted to explore. For futher investigation, we would like to explore the mean squared displacements and standard deviations of worms leaving each city.
+
+Lastly, we acknowledge that our city configuration is small and solvable by inspection, our results suggest that chemotactic renormalisation is in principle sound. If the experiment is extended to larger configurations, we expect the differences in gridding and chemotactic solutions to be widened, and the distribution of chemotactic path lengths (Figure \ref{fighist}) to be more spread out and positively skewed.
+
+
+\section{Conclusion}
+
+Our results illustrate the potential advantages of chemotactic renormalisation over orthogonal gridding. More than 80\% of our chemotactic solutions coincided with the optimal solution ABEFDCA, with a path length of \SI{0.0965}{\metre} and improvement of more than 20\% from the median of all possible path lengths. This is a substantial improvement the rudimentary arbitrary gridding technique, which deviates from optimal by 7\%. 
+
+These findings confirm our expectations that a chemotactic heuristic sensitive to the city configuration improves upon gridding. Future research could investigate other natural phenomenon that are viable renormalisation techniques, and ultimately characterise these systems to produce a computational heuristic for TSP, which combines the merits of nearest-distance (chemotaxis is similar to diffusion) and stochastic algorithms like simulated annealing (chemotaxis is nondeterministic). We would be interested to compare the results and runtime of an algorithm with greedy, gridding, and simulated annealing algorithms. As aforementioned, there are extensive applications to operations optimisation, manufacture, and genomics.
+
+
+\section{Acknowledgements}
+
+We sincerely thank Dr. Jennifer Gadd, Dr. Quan Wang, Mochi Liu, and Sagar Setru for laboratory assistance and helpful suggestions to our experimental method. Thank you especially to Dr. Gadd for accommodating our requests. Thank you the ISC class for valuable feedback in our experimental proposal and moral support. In particular, we are grateful to Chris Russo for harsh criticism and mockery; to Henry Ando for believing in the computational power of \textit{C. elegans}; to Alice Lin for giving us a paper on Monte Carlos Markov Chains and subsequently making us obsessed with them; and to Austin (Han Jie) Wang and Olivia Long for providing the worst soundtrack of pure tones ever to do our work to. Finally, we are indebted to our \text{C. elegans}, who showed that P=NP.
+
+\begin{comment}
+\subsection{References}
+
+You can upload a \verb|.bib| file containing your BibTeX entries, created with JabRef; or import your \href{https://www.overleaf.com/blog/184}{Mendeley}, CiteULike or Zotero library as a \verb|.bib| file. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|.
+
+You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
+
+We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu above --- or use the contact form at \url{https://www.overleaf.com/contact}!
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+\end{comment}
+
+\section{Supplementary Information}
+
+
+\end{document}

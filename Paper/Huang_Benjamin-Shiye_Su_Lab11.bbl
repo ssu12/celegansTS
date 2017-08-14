@@ -1,0 +1,37 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Held and Karp(1962)]{Held1962}
+Michael Held and Richard~M. Karp.
+\newblock A dynamic programming approach to sequencing problems.
+\newblock \emph{Society for Industrial and Applied Mathematics}, 10\penalty0
+  (1):\penalty0 196--210, March 1962.
+\newblock ISSN 10.1137/0110015.
+
+\bibitem[Houdayer and Martin(1999)]{Houdayer1999}
+J.~Houdayer and O.~C. Martin.
+\newblock Renormalization for discrete optimization.
+\newblock \emph{Physical Review Letters}, 83\penalty0 (5):\penalty0 1030,
+  August 1999.
+
+\bibitem[Ugajin(2002)]{Ugajin2002}
+Ryuichi Ugajin.
+\newblock Method to solve the traveling salesman problem using the inverse of
+  diffusion process.
+\newblock \emph{Physica A: Statistical Mechanics and its Applications},
+  307\penalty0 (1):\penalty0 260--268, April 2002.
+\newblock ISSN https://doi.org/10.1016/S0378-4371(01)00571-4.
+
+\bibitem[Yoshiyuki and Yoshiki(1995)]{Yoshiyuki1995}
+Usami Yoshiyuki and Kano Yoshiki.
+\newblock New method of solving the traveling salesman problem based on
+  renormalization theory.
+\newblock \emph{Physical Review Letters}, 75\penalty0 (9):\penalty0 1683--1686,
+  August 1995.
+\newblock ISSN https://doi.org/10.1103/PhysRevLett.75.1683.
+
+\end{thebibliography}

@@ -1,0 +1,77 @@
+% Encoding: UTF-8
+
+@Article{Held1962,
+  author   = {Michael Held and Richard M. Karp},
+  title    = {A Dynamic Programming Approach to Sequencing Problems},
+  journal  = {Society for Industrial and Applied Mathematics},
+  year     = {1962},
+  volume   = {10},
+  number   = {1},
+  pages    = {196-210},
+  month    = {March},
+  issn     = {10.1137/0110015},
+  abstract = {Many interesting and important optimization problems require the
+determination of a best order of performing a given set of operations.
+This paper is concerned with the solution of three such sequencing problems:
+a scheduling problem involving arbitrary cost functions, the travelingsalesman
+problein, and an assembly-line blancing problem. Each of these
+problems has a structure permitting solution by means of recursion schemes
+of the type associated with dynamic programming. In essence, these recursion
+schemes permit the problems to be treated in terms of combinations,
+rather than permutations, of the operations to be performed. The dynamic
+programming formulations are given in 1, together with a discussion of
+various extensions such as the inclusion of precedence constraints. In each
+case the proposed method of solution is computationally effective for
+problems in a certain limited range. Approximate solutions to larger
+problems may be obtained by solving sequences of small derived problems,
+each having the same structure as the original one. This procedure of successive
+approximations is developed in detail in 2 with specific reference
+to the traveling-salesman problem, and 3 summarizes computational experience
+with an IBM 7090 program using the procedure.},
+}
+
+@Article{Yoshiyuki1995,
+  author   = {Usami Yoshiyuki and Kano Yoshiki},
+  title    = {New Method of Solving the Traveling Salesman Problem Based on Renormalization Theory},
+  journal  = {Physical Review Letters},
+  year     = {1995},
+  volume   = {75},
+  number   = {9},
+  pages    = {1683-1686},
+  month    = {August},
+  issn     = {https://doi.org/10.1103/PhysRevLett.75.1683},
+  abstract = {We propose a new method of solving the traveling salesman problem in this Letter. A new technique,
+whose concept comes from real space renormalization theory, is introduced to solve the combinatorial
+problem of operation research. Examples of the calculation applied from the 48-cities to the 532-
+cities problem and a theoretical estimate of the computational effort are presented. It was found that
+the present method belongs to the group of the fastest computing algorithm of the traveling salesman
+problem. Throughout this work we show an interesting cross of operation research and statistical
+physics.},
+}
+
+@Article{Ugajin2002,
+  author   = {Ryuichi Ugajin},
+  title    = {Method to solve the traveling salesman problem using the inverse of diffusion process},
+  journal  = {Physica A: Statistical Mechanics and its Applications},
+  year     = {2002},
+  volume   = {307},
+  number   = {1},
+  pages    = {260-268},
+  month    = {April},
+  issn     = {https://doi.org/10.1016/S0378-4371(01)00571-4},
+  abstract = {The travelling salesman problem, in which the best route between cities to be visited is chosen from a large number of possible routes, is reconsidered using the time reversal of physical dynamics, e.g. an inverse of the diffusion process. Information mediators assigned to every city diffuse as time passes, eventually merging into a single peak. When the time reversal of the dynamics is performed, the single peak splits into two peaks, each of which splits into two peaks, eventually resulting in peaks at all the cities. The hierarchy of the above bifurcations tells us how the distribution of the cities looks as the level of focus changes. This scheme is applied to a travelling salesman problem involving 532 US cities, the result of which is a 17% longer path than the optimal path.},
+}
+
+@Article{Houdayer1999,
+  author   = {J. Houdayer and O. C. Martin},
+  title    = {Renormalization for Discrete Optimization},
+  journal  = {Physical Review Letters},
+  year     = {1999},
+  volume   = {83},
+  number   = {5},
+  pages    = {1030},
+  month    = {August},
+  abstract = {The renormalization group has proven to be a very powerful tool in physics for treating systems with many length scales. Here we show how it can be adapted to provide a new class of algorithms for discrete optimization. The heart of our method uses renormalization and recursion, and these processes are embedded in a genetic algorithm. The system is self-consistently optimized on all scales, leading to a high probability of finding the ground state configuration. To demonstrate the generality of such an approach, we perform tests on traveling salesman and spin glass problems. The results show that our “genetic renormalization algorithm” is extremely powerful.},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
