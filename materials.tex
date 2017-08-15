@@ -1,0 +1,152 @@
+\listfiles
+
+\documentclass[11pt]{article}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{bm}			% Allows access to bold math symbols within math expressions
+\usepackage{booktabs}		% Provides additional commands to enhance the quality of table in LaTeX
+\usepackage{pdfpages}		% Allows external PDF pages to be inserted
+%\usepackage{hyperref}		% Allows for hypertext links this includes embedding of links to websites
+\usepackage{titlesec}		% Allows basic changes to the standard title (``chapter'') style, such as font style, size or placement of title
+
+%\usepackage{color}			% Allows the addition of color to text and background			
+%\usepackage{soul}			% Allows the highlighting/emphasizing text (need to load color package)
+%\usepackage{hyphenat}		% Allows for the disabling or enabling of hypenation
+
+%\usepackage{subfigure}
+%\usepackage{float}	
+%\usepackage{graphicx}	
+%\usepackage{epstopdf}
+%\usepackage{caption}		% Allows many aspects of the caption to be modified
+
+
+\usepackage{amsmath}	
+\usepackage{amssymb}	
+
+\setlength\parindent{0pt}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\molar}{M}
+
+\usepackage{fixltx2e}
+\usepackage[section]{placeins}
+\usepackage{mhchem}
+\usepackage{enumitem}
+
+%matlab2tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
+\newlength\figH
+\newlength\figW
+\setlength{\figH}{3in}
+\setlength{\figW}{6.15in}
+
+
+%Section formatting modifications
+\titlespacing*{\subsection}{0pt}{15pt}{12pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{0pt}
+
+\titleformat{\section}{\normalfont\fontsize{12}{5}\bfseries}{\thesection}{1em}{}
+  
+%Formatting modifications for figures
+%\captionsetup[figure]{labelfont=bf}
+
+%Formatting modifications for tables
+%\captionsetup[table]{labelfont=bf}
+
+%Formatting modifications for footnotes
+%\renewcommand{\thefootnote}{\roman{footnote}}
+%\renewcommand{\theenumii}{\alph{enumii}}
+
+
+\title{\vspace{-1em}{\underline{Independent Laboratory: Materials List}}\vspace{-.5em}}
+\author{Benjamin Huang \& Shiye Su}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Glassware \& Non-Disposables}
+
+\begin{itemize}
+
+	\item 1 pair of tweezers: for picking up worms.
+	
+\end{itemize}
+
+
+\section{Disposables}
+
+\begin{itemize}
+
+	\item 40 skewers: for depositing dye at the correct city locations. 
+	
+	\item Box of qtips: to aid in depositing dye. 
+	
+	\item 20 sheets of absorbent paper or tissue: provides the terrain on which dye will diffuse. Size approximately \SI{20}{\centi \metre} by \SI{10}{\centi \metre}. 
+	
+\end{itemize}
+
+
+\section{Chemicals}
+
+\begin{itemize}
+	
+	\item NaCl solution: sufficient to create at least 6 agar plates at NaCl concentration \SI{50}{\milli \molar}.
+
+	\item 6 agar plates: we only actually need 3, but would like to leave some room for error. We will come in before lab to make these plates at \SI{50}{\milli \molar} NaCl with radial concentration gradients about the cities. We will create the gradient by creating a pillar at each city, filling it with agar of 0 NaCl, and allowing it to diffuse. If the chemotaxis portion of our experiment carries over more than one day, we will need to remake these plates.
+	
+	\item Dye: to add to NaCl-free agar, so that cities are visible. Dye should not attract \emph{C. elegans} worms.
+	
+	\item Dye or ink: for diffusing out on paper. This dye could be the same as the previous dye. 
+	
+\end{itemize}
+
+
+\section{Biologicals}
+
+\begin{itemize}
+
+	\item 100 \emph{C. elegans} worms: provided in the same way they were in the chemotaxis lab. We would like them grown in \SI{50}{\milli \molar} NaCl solution. 
+	
+\end{itemize}
+
+
+\section{Instruments}
+
+\begin{itemize}
+
+	\item 2 cameras: image sequence acquisition. 
+	
+	\item 1 ruler: for scale conversion.
+	
+\end{itemize}
+
+
+\section{Miscellaneous}
+
+\begin{itemize}
+
+	\item 2 glass slabs or rigid sheets of transparent plastic: platform for placing our diffusion terrain (tissue). Should be slightly larger than size of terrain. We touch dye to the terrain from the top. Camera positioned from bottom. Must be transparent.
+	
+	\item 2 stands for supporting the above. 
+	
+	\item 2 thin needles: creating holes in agar plates in the location of cities.
+		
+	\item 2 retort stands: for holding camera.
+	
+	\item 2 LED rings: for imaging \emph{C. elegans}. Our optics set up for this part of the lab should be similar to that in the chemotaxis lab.
+	
+	\item 3 stiff boards (balsa wood, many sheets of cardboard?): for fixing skewers in the positions corresponding to cities. This should provide a durable and stable frame so that the positions of the skewers do not move between trials. Ideally we would make this before the day of the lab. \emph{Could we drill small holes in the wood to fit the skewers?}
+	
+\end{itemize}
+
+NOTE: We have requested 2 of many items because we hope to work simultaneously on the same tasks. 
+
+\end{document}
